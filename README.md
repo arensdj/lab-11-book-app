@@ -42,15 +42,15 @@ Finish time: __10:05___
 
 Actual time needed to complete: _10 MINUTES____
 
-Number and name of feature: __#3__Brows Results_____________________
+Number and name of feature: __#3__Browse Results_____________________
 
 Estimate of time needed to complete: _45 minutes____
 
 Start time: _10:05____
 
-Finish time: _____
+Finish time: _11:45____
 
-Actual time needed to complete: _____
+Actual time needed to complete: __1:40___
 
 Number and name of feature: ________________________________
 
