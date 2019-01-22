@@ -1,0 +1,20 @@
+{
+  "name": "lab-11-book-app",
+  "version": "1.0.0",
+  "description": "Book Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arensdj/lab-11-book-app.git"
+  },
+  "author": "Chris Merritt and Jasmin Arensdorf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arensdj/lab-11-book-app/issues"
+  },
+  "homepage": "https://github.com/arensdj/lab-11-book-app#readme"
+}
