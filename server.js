@@ -23,7 +23,7 @@ app.get('/', newSearch);
 app.post('/searches', createSearch);
 
 // Catch-all
-app.get('*', (request, response) => response.status(404).send('This route does not exist'));
+app.get('*', showError);
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
@@ -37,11 +37,20 @@ function newSearch(request, response) {
 // Book constructor
 function Book(info) {
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
-
+  this.image = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
   this.title = info.title ? info.title : 'No Title Found';
   this.author = info.authors ? info.authors : 'No Author Found';
+  this.description = info.description ? info.description : 'No Description provided.';
 
 }
+
+function showError(request, response){
+  response.render('pages/error');
+}
+// function handleError(err, res){
+//   //if (res) res.status(500).send('Sorry, something went wrong');
+//   //res.render('pages/error');
+// }
 
 // No API required
 
@@ -61,7 +70,10 @@ function createSearch(request, response) {
 
   return superagent.get(url)
     .then(apiResponse => {
-      // console.log('ApiResponse: ', apiResponse);
+      //if(!apiResponse.body.items.length){
+     //   throw 'Book or Author not found.';
+     // }
+     // else{
       bookSummary.push(apiResponse.body.items.map(bookResult => {
         const summary = new Book(bookResult.volumeInfo);
         console.log('Book results: ', bookResult);
@@ -71,8 +83,15 @@ function createSearch(request, response) {
       return bookSummary;
     })
     .then(resultsFromMap => {
-      console.log('Results from map: ', resultsFromMap);
-      console.log('Book summary: ', bookSummary);
-      response.render('pages/searches/show', {bookSummary})
+     // if(!resultsFromMap){
+     //   throw 'Book or Author not found.';
+     // }
+     // else{
+        console.log('Results from map: ', resultsFromMap);
+        console.log('Book summary: ', bookSummary);
+        response.render('pages/searches/show', {bookSummary});
+     // }
+      
     })
+    //.catch(error => handleError(error))
 }
