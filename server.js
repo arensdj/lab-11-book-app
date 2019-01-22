@@ -39,6 +39,7 @@ function Book(info) {
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
 
   this.title = info.title ? info.title : 'No Title Found';
+  this.author = info.authors ? info.authors : 'No Author Found';
 
 }
 
@@ -51,6 +52,8 @@ function createSearch(request, response) {
   console.log('search', request.body.search);
 
   if (request.body.search[1] === 'title') { url += `+intitle:${request.body.search[0]}`; }
+  if (request.body.search[1] === 'author') { url += `+inauthor:${request.body.search[0]}`; }
+
 
   console.log('url: ', url);
 
@@ -61,6 +64,7 @@ function createSearch(request, response) {
       // console.log('ApiResponse: ', apiResponse);
       bookSummary.push(apiResponse.body.items.map(bookResult => {
         const summary = new Book(bookResult.volumeInfo);
+        console.log('Book results: ', bookResult);
         return summary;
       }));
 
