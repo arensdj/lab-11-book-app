@@ -32,21 +32,21 @@ Finish time: _9:45____
 
 Actual time needed to complete: _45 mins____
 
-Number and name of feature: _____#2 Google Books API___________
+Number and name of feature: _____#2 Set up forms___________
 
 Estimate of time needed to complete: __30 mins___
 
 Start time: __9:55___
 
-Finish time: _____
+Finish time: __10:05___
 
-Actual time needed to complete: _____
+Actual time needed to complete: _10 MINUTES____
 
-Number and name of feature: ________________________________
+Number and name of feature: __#3__Brows Results_____________________
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: _45 minutes____
 
-Start time: _____
+Start time: _10:05____
 
 Finish time: _____
 
