@@ -37,9 +37,10 @@ function newSearch(request, response) {
 // Book constructor
 function Book(info) {
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
-
+  this.image = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
   this.title = info.title ? info.title : 'No Title Found';
   this.author = info.authors ? info.authors : 'No Author Found';
+  this.description = info.description ? info.description : 'No Description provided.';
 
 }
 
