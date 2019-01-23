@@ -21,3 +21,10 @@ label {
   background-color: lightgrey;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  padding-top: 70px;
+}
