@@ -23,7 +23,7 @@ app.get('/', newSearch);
 app.post('/searches', createSearch);
 
 // Catch-all
-app.get('*', showError);
+app.get('*', handleError);
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
@@ -44,13 +44,11 @@ function Book(info) {
 
 }
 
-function showError(request, response){
-  response.render('pages/error');
-}
-// function handleError(err, res){
-//   //if (res) res.status(500).send('Sorry, something went wrong');
-//   //res.render('pages/error');
-// }
+
+ function handleError(request, response){
+   console.error(request);
+   response.render('pages/error', {error: 'Page not found'});
+ }
 
 // No API required
 
@@ -70,10 +68,6 @@ function createSearch(request, response) {
 
   return superagent.get(url)
     .then(apiResponse => {
-      //if(!apiResponse.body.items.length){
-     //   throw 'Book or Author not found.';
-     // }
-     // else{
       bookSummary.push(apiResponse.body.items.map(bookResult => {
         const summary = new Book(bookResult.volumeInfo);
         console.log('Book results: ', bookResult);
@@ -83,15 +77,9 @@ function createSearch(request, response) {
       return bookSummary;
     })
     .then(resultsFromMap => {
-     // if(!resultsFromMap){
-     //   throw 'Book or Author not found.';
-     // }
-     // else{
         console.log('Results from map: ', resultsFromMap);
         console.log('Book summary: ', bookSummary);
-        response.render('pages/searches/show', {bookSummary});
-     // }
-      
+        response.render('pages/searches/show', {bookSummary});      
     })
-    //.catch(error => handleError(error))
+    .catch(error => handleError(error, response));
 }
