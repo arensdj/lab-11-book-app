@@ -1,5 +1,9 @@
-
-
+<!DOCTYPE html>
+<html>
+    <%- include('./layout/head') -%>
+  <body>
+      <%- include('./layout/header') -%>
+  <main>
 <form action = "/searches" method ="post">
   <input class="text-input" type="text" name="search" placeholder="Enter title or author" required>
     <fieldset>
@@ -16,3 +20,6 @@
     </fieldset>
     <button type="submit">Search the Google Books API</button>
   </form>
+  </main>
+  </body>
+  </html>
