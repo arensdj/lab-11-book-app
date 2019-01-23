@@ -41,20 +41,18 @@ function Book(info) {
   this.title = info.title ? info.title : 'No Title Found';
   this.author = info.authors ? info.authors : 'No Author Found';
   this.description = info.description ? info.description : 'No Description provided.';
-
 }
 
+function handleError(request, response){
+  console.error(request);
+  response.render('pages/error', {error: 'Page not found'});
+}
 
- function handleError(request, response){
-   console.error(request);
-   response.render('pages/error', {error: 'Page not found'});
- }
-
- function createErrorMiddleWare(error){
-   return function(request, response){
+function createErrorMiddleWare(error){
+  return function(request, response){
     response.render('pages/error', {error});
-   }
- }
+  }
+}
 
 // No API required
 
@@ -83,9 +81,9 @@ function createSearch(request, response) {
       return bookSummary;
     })
     .then(resultsFromMap => {
-        console.log('Results from map: ', resultsFromMap);
-        console.log('Book summary: ', bookSummary);
-        response.render('pages/searches/show', {bookSummary});      
+      console.log('Results from map: ', resultsFromMap);
+      console.log('Book summary: ', bookSummary);
+      response.render('pages/searches/show', {bookSummary});
     })
     .catch(error => {
       let checkError = createErrorMiddleWare(error);
