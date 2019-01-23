@@ -65,15 +65,36 @@ Estimate of time needed to complete: _1:00___
 
 Start time: __12:00___
 
-Finish time: _____
+Finish time: __1:00___
 
-Actual time needed to complete: _____
+Actual time needed to complete: _1:00____
 
 Number and name of feature: _____#5 CSS Styling_____________
 
 Estimate of time needed to complete: __1:30
 
 Start time: __1:00___
+
+Finish time: __1:45___
+
+Actual time needed to complete: _1:45____
+
+Number and name of feature: _____#6 Database setup_____________
+
+Estimate of time needed to complete: _1:00
+
+Start time: __9:00___
+
+Finish time: __10:30___
+
+Actual time needed to complete: _1:30____
+
+
+Number and name of feature: _____#7 Display Bookshelf_______
+
+Estimate of time needed to complete: _:45
+
+Start time: __10:35___
 
 Finish time: _____
 
