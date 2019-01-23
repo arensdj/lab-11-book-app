@@ -50,6 +50,12 @@ function Book(info) {
    response.render('pages/error', {error: 'Page not found'});
  }
 
+ function createErrorMiddleWare(error){
+   return function(request, response){
+    response.render('pages/error', {error});
+   }
+ }
+
 // No API required
 
 function createSearch(request, response) {
@@ -81,5 +87,8 @@ function createSearch(request, response) {
         console.log('Book summary: ', bookSummary);
         response.render('pages/searches/show', {bookSummary});      
     })
-    .catch(error => handleError(error, response));
+    .catch(error => {
+      let checkError = createErrorMiddleWare(error);
+      checkError(request, response);
+    });
 }
