@@ -23,7 +23,7 @@ app.get('/', newSearch);
 app.post('/searches', createSearch);
 
 // Catch-all
-app.get('*', handleError);
+app.get('*', createErrorMiddleWare('Error(404) Page not found.'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
@@ -43,10 +43,10 @@ function Book(info) {
   this.description = info.description ? info.description : 'No Description provided.';
 }
 
-function handleError(request, response){
-  console.error(request);
-  response.render('pages/error', {error: 'Page not found'});
-}
+// function handleError(request, response){
+//   console.error(request);
+//   response.render('pages/error', {error: 'Page not found'});
+// }
 
 function createErrorMiddleWare(error){
   return function(request, response){
@@ -64,7 +64,6 @@ function createSearch(request, response) {
 
   if (request.body.search[1] === 'title') { url += `+intitle:${request.body.search[0]}`; }
   if (request.body.search[1] === 'author') { url += `+inauthor:${request.body.search[0]}`; }
-
 
   console.log('url: ', url);
 
