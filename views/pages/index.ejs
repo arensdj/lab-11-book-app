@@ -6,7 +6,7 @@
     <main class="main-container">
       <% results.forEach(item => { %>
         <div class="bookEntry">
-          <img src=<%= item.image %>></img>
+          <img src=`<%= item.image %>`></img>
           <h4 class="bookTitle"> <%= item.title %> </h4>
           <h5 class="bookAuthor"> <%= item.author %></h5>
           <p class="bookDesc"> <%= item.description %></p>

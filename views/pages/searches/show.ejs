@@ -12,29 +12,30 @@
       <p class="bookDesc"> <%= item.description %></p>
       <button class="bookSelect">Select This book</button>
 
-      <form class="hiddenForm" action="/" method="put" hidden=true>
+      <form class="hiddenForm" action="/books" method="post" hidden=true>
+        <input value=<%= item.image %> >
         <fieldset>
           <label for="title">
             <span>Title</span>
-            <input type="text" name="title"  placeholder= <%= item.title %> >
+            <input type="text" name="title"  value= <%= item.title %> >
           </label>
         </fieldset>
         <fieldset>
             <label for="author">
               <span>Author</span>
-              <input type="text" name="author" placeholder=<%= item.author %>>
+              <input type="text" name="author" value=<%= item.author %>>
             </label>
           </fieldset>
           <fieldset>
               <label for="description">
                 <span>Description</span>
-                <input type="text" name="description"  placeholder=<%= item.description %>>
+                <input type="text" name="description"  value=<%= item.description %>>
               </label>
             </fieldset>
             <fieldset>
                 <label for="description">
                   <span>Bookshelf</span>
-                  <input type="text" name="bookshelf">
+                  <input type="text" name="bookshelf" required>
                 </label>
               </fieldset>
         <button type="submit">Update Details</button>

@@ -34,6 +34,8 @@ app.get('/forms', newSearch);
 // Creates a new search to the Google Boos API
 app.post('/searches', createSearch);
 
+app.post('/books', addBook);
+
 // Catch-all
 app.get('*', createErrorMiddleWare('Error(404) Page not found.'));
 
@@ -63,10 +65,10 @@ function Book(info) {
 // }
 
 function addBook(request, response) {
-  console.log(request.body);
+  console.log('Request body: ', request.body);
   let {author, title, isbn, image_url, description, bookshelf} = request.body;
 
-  let SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);`;
+  let SQL = `INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);`;
   
   let values = [author, title, isbn, image_url, description, bookshelf];
 
@@ -80,7 +82,7 @@ function newBookshelf(request, response) {
 
   return client.query(SQL)
     .then(results => {
-      console.log(results.rows);
+      console.log('Result rows: ', results.rows);
       response.render('pages/index', {results: results.rows});
     })
     // .catch(createErrorMiddleWare('No data returned.'));
@@ -102,13 +104,8 @@ function createErrorMiddleWare(error){
 function createSearch(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
 
-  console.log('body: ', request.body);
-  console.log('search', request.body.search);
-
   if (request.body.search[1] === 'title') { url += `+intitle:${request.body.search[0]}`; }
   if (request.body.search[1] === 'author') { url += `+inauthor:${request.body.search[0]}`; }
-
-  console.log('url: ', url);
 
   const bookSummary = [];
 
@@ -116,7 +113,7 @@ function createSearch(request, response) {
     .then(apiResponse => {
       bookSummary.push(apiResponse.body.items.map(bookResult => {
         const summary = new Book(bookResult.volumeInfo);
-        console.log('Book results: ', bookResult);
+        // console.log('Book results: ', bookResult);
         return summary;
       }));
 
@@ -124,7 +121,7 @@ function createSearch(request, response) {
     })
     .then(resultsFromMap => {
       console.log('Results from map: ', resultsFromMap);
-      console.log('Book summary: ', bookSummary);
+      // console.log('Book summary: ', bookSummary);
       response.render('pages/searches/show', {bookSummary});
     })
     .catch(error => {
