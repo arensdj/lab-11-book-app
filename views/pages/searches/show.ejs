@@ -19,14 +19,14 @@
     </section>
   </header>
   <main>
-      <% bookSummary[0].forEach(item => { %>
-      <div class="bookEntry">
-        <img src=<%= item.image %>></img>
-        <h4 class="bookTitle"> <%= item.title %> </h4>
-        <h5 class="bookAuthor"> <%= item.author %></h5>
-        <p class="bookDesc"> <%= item.description %></p>
-      </div>
-        <% }); %>
+    <% bookSummary[0].forEach(item => { %>
+    <div class="bookEntry">
+      <img src=<%= item.image %>></img>
+      <h4 class="bookTitle"> <%= item.title %> </h4>
+      <h5 class="bookAuthor"> <%= item.author %></h5>
+      <p class="bookDesc"> <%= item.description %></p>
+    </div>
+      <% }); %>
             
   </main>
 </body>

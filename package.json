@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/arensdj/lab-11-book-app#readme",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "pg": "^7.8.0",
     "superagent": "^4.1.0"
   }
 }
