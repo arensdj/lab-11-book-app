@@ -41,7 +41,7 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 // Render index page on page load
 function newSearch(request, response) {
-  response.render('pages/index');
+  response.render('pages/form');
 }
 
 // Helper functions

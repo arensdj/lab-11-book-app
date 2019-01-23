@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Book App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/base.css">
-    <link rel="stylesheet" href="./styles/layout.css">
-
-  </head>
+    <%- include('../layout/head') -%>
   <body>
-
-<header>
-    <section class="pageTitle">
-      Best Books
-    </section>
-    <section class="searchTitle">
-      Search by Title or Author
-    </section>
-  </header>
+      <%- include('../layout/header') -%>
   <main>
     <% bookSummary[0].forEach(item => { %>
     <div class="bookEntry">
@@ -25,9 +10,39 @@
       <h4 class="bookTitle"> <%= item.title %> </h4>
       <h5 class="bookAuthor"> <%= item.author %></h5>
       <p class="bookDesc"> <%= item.description %></p>
-    </div>
+      <button class="bookSelect">Select This book</button>
+
+      <form class="hiddenForm" action="/" method="put" hidden=true>
+        <fieldset>
+          <label for="title">
+            <span>Title</span>
+            <input type="text" name="title"  placeholder= <%= item.title %> >
+          </label>
+        </fieldset>
+        <fieldset>
+            <label for="author">
+              <span>Author</span>
+              <input type="text" name="author" placeholder=<%= item.author %>>
+            </label>
+          </fieldset>
+          <fieldset>
+              <label for="description">
+                <span>Description</span>
+                <input type="text" name="description"  placeholder=<%= item.description %>>
+              </label>
+            </fieldset>
+            <fieldset>
+                <label for="description">
+                  <span>Bookshelf</span>
+                  <input type="text" name="bookshelf">
+                </label>
+              </fieldset>
+        <button type="submit">Update Details</button>
+      </form>
+      </div>
       <% }); %>
             
   </main>
+  <%- include('../layout/footer') -%>
 </body>
 </html>
