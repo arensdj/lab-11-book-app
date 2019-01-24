@@ -3,6 +3,7 @@
   <%- include('./layout/head') -%>
   <body>
       <%- include('./layout/header') -%>
+      <p><%= results.length %> books in the collection.</p>
     <main class="main-container">
       <% results.forEach(item => { %>
         <div class="bookEntry">
