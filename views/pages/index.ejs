@@ -6,13 +6,9 @@
       <p><%= results.length %> books in the collection.</p>
     <main class="main-container">
       <% results.forEach(item => { %>
-        <div class="bookEntry">
-          <img src="<%= item.image_url %>"></img>
-          <h4 class="bookTitle"> <%= item.title %> </h4>
-          <h5 class="bookAuthor"> <%= item.author %></h5>
-          <p class="bookDesc"> <%= item.description %></p>
-        </div>
+        <%- include('books/detail', {item}); %>
       <% }); %>
     </main>
+    <%- include('./layout/footer') -%>
   </body>
 </html>

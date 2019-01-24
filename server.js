@@ -30,6 +30,7 @@ app.get('/', newBookshelf);
 
 app.get('/forms', newSearch);
 
+app.get('/books/:id', getOneBook);
 
 // Creates a new search to the Google Boos API
 app.post('/searches', createSearch);
@@ -51,18 +52,13 @@ function newSearch(request, response) {
 // Book constructor
 function Book(info) {
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
-  this.image = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
+  this.image_url = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
   this.title = info.title ? info.title : 'No Title Found';
   this.isbn = info.industryIdentifiers[0].identifier;
   this.author = info.authors ? info.authors : 'No Author Found';
   this.description = info.description ? info.description : 'No Description provided.';
   this.bookshelf = 'One';
 }
-
-// function handleError(request, response){
-//   console.error(request);
-//   response.render('pages/error', {error: 'Page not found'});
-// }
 
 function addBook(request, response) {
   console.log('Request body: ', request.body);
@@ -74,6 +70,18 @@ function addBook(request, response) {
 
   return client.query(SQL, values)
     .then(response.redirect('/'))
+    .catch(err => createErrorMiddleWare(err));
+}
+
+function getOneBook(request, response) {
+  let SQL = `SELECT * FROM books WHERE id=$1;`;
+  let values = [request.params.id];
+
+  return client.query(SQL, values)
+    .then(result => {
+      console.log('single', result.rows[0]);
+      return response.render('pages/books/show', {item: result.rows[0]});
+    })
     .catch(err => createErrorMiddleWare(err));
 }
 
