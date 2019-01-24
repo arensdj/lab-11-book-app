@@ -96,6 +96,37 @@ Estimate of time needed to complete: _:45
 
 Start time: __10:35___
 
-Finish time: _____
+Finish time: _11:20____
 
-Actual time needed to complete: _____
+Actual time needed to complete: ___:45__
+
+Number and name of feature: _____#8 Display Book Detail, Post Method 
+
+Estimate of time needed to complete: _2:00
+
+Start time: __11:30___
+
+Finish time: _1:30____
+
+Actual time needed to complete: ___2:00_
+
+Number and name of feature: _____#9 Display Bookshelf, Get Method_______
+
+Estimate of time needed to complete: _1:00
+
+Start time: __10:35___
+
+Finish time: _11:35___
+
+Actual time needed to complete: ___1:00__
+
+Number and name of feature: _____#10 Details View of Single Book
+
+Estimate of time needed to complete: _1:00
+
+Start time: __9:10___
+
+Finish time: _______
+
+Actual time needed to complete: ___1:00__
+
