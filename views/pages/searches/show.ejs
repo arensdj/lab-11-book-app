@@ -5,7 +5,7 @@
       <%- include('../../layout/header') -%>
   <main>
     <% bookSummary[0].forEach(item => { %>
-      <%- include('../books/detail', {item}); %>
+      <%- include('../books/detail', {formAction: 'get', item}); %>
       <% }); %>
             
   </main>

@@ -7,43 +7,7 @@
     
     <button class="bookSelect">Select This book</button>
 
-    <form class="hiddenForm" action="/books" method="post" >
-      <fieldset>
-        <label for="image_url">
-          <span>Image URL</span>
-          <input type="text" name="image_url" value= "<%= item.image_url %>">
-        </label>
-      </fieldset>
-      <fieldset>
-        <label for="title">
-          <span>Title</span>
-          <input type="text" name="title"  value= "<%= item.title %>">
-        </label>
-      </fieldset>
-      <fieldset>
-        <label for="author">
-          <span>Author</span>
-          <input type="text" name="author" value="<%= item.author %>">
-        </label>
-      </fieldset>
-      <fieldset>
-        <label for="isbn">
-          <span>Isbn</span>
-          <input type="text" name="isbn" value="<%= item.isbn %>">
-        </label>
-      </fieldset>
-      <fieldset>
-          <label for="description">
-            <span>Description</span>
-            <input type="text" name="description"  value="<%= item.description %>">
-          </label>
-      </fieldset>
-      <fieldset>
-          <label for="bookshelf">
-            <span>Bookshelf</span>
-            <input type="text" name="bookshelf" required>
-          </label>
-        </fieldset>
-      <button type="submit">Update Details</button>
-    </form>
+      <section class="hidden-form">
+        <%- include('./edit', {formAction, item}); %>
+      </section>
   </div>

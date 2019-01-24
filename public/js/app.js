@@ -1,4 +1,7 @@
+'use strict';
 
 $('.bookSelect').on('click', function() {
-  $('form').removeClass('hiddenForm');
+  $(this).next().toggleClass('hidden-form');
+  $(this).next().toggleClass('visible-form');
+  $(this).hide();
 });

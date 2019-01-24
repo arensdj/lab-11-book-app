@@ -4,13 +4,15 @@
 const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
+const methodOverride = require('method-override');
+
 
 // Load Enviroment from .env file
 require('dotenv').config();
 
 // Application Setup
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Application Middleware
 app.use(express.urlencoded({extended: true}));
@@ -24,6 +26,17 @@ client.on('error', err => console.error(err));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
+//Middleware for Update and Delete
+app.use(
+  methodOverride(request => {
+    if (request.body && typeof request.body === 'object' && '_method' in request.body){
+      let method = request.body._method;
+      delete request.body._method;
+      return method;
+    }
+  })
+);
+
 // API Routes
 // Renders the search form
 app.get('/', newBookshelf);
@@ -31,6 +44,8 @@ app.get('/', newBookshelf);
 app.get('/forms', newSearch);
 
 app.get('/books/:id', getOneBook);
+
+app.put('/books/:id', updateBook);
 
 // Creates a new search to the Google Boos API
 app.post('/searches', createSearch);
@@ -44,7 +59,7 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 // Render index page on page load
 function newSearch(request, response) {
-  response.render('pages/form');
+  response.render('pages/form', {formAction: 'get'});
 }
 
 // Helper functions
@@ -61,7 +76,7 @@ function Book(info) {
 }
 
 function addBook(request, response) {
-  console.log('Request body: ', request.body);
+  // console.log('Request body: ', request.body);
   let {author, title, isbn, image_url, description, bookshelf} = request.body;
 
   let SQL = `INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);`;
@@ -79,8 +94,8 @@ function getOneBook(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
-      console.log('single', result.rows[0]);
-      return response.render('pages/books/show', {item: result.rows[0]});
+      console.log('single', result.rows);
+      return response.render('pages/books/show', {item: result.rows[0], formAction: 'update'});
     })
     .catch(err => createErrorMiddleWare(err));
 }
@@ -90,7 +105,7 @@ function newBookshelf(request, response) {
 
   return client.query(SQL)
     .then(results => {
-      console.log('Result rows: ', results.rows);
+      // console.log('Result rows: ', results.rows);
       response.render('pages/index', {results: results.rows});
     })
     // .catch(createErrorMiddleWare('No data returned.'));
@@ -98,6 +113,16 @@ function newBookshelf(request, response) {
       let checkError = createErrorMiddleWare(error);
       checkError(request, response);
     });
+}
+
+function updateBook(request, response){
+  let {author, title, isbn, image_url, description, bookshelf} = request.body;
+  let SQL = `UPDATE books SET author=$1, title=$2, isbn=$3, image_url=$4, description=$5, bookshelf=$6 WHERE id=$7;`;
+  let values = [author, title, isbn, image_url, description, bookshelf, request.params.id];
+  client
+    .query(SQL, values)
+    .then(response.redirect(`/books/${request.params.id}`))
+    .catch(err => createErrorMiddleWare(err));
 }
 
 
