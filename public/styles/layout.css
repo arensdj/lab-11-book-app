@@ -49,6 +49,9 @@ p{
   border-bottom: 1px solid black;
 }
 
-.hiddenForm {
+.hidden-form {
   display: none;
+}
+.visible-form{
+  display: block;
 }
