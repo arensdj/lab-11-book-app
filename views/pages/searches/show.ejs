@@ -13,7 +13,12 @@
       <button class="bookSelect">Select This book</button>
 
       <form class="hiddenForm" action="/books" method="post" hidden=true>
-        <input value=<%= item.image %> >
+        <fieldset>
+          <label for="image_url">
+            <span>Image URL</span>
+            <input type="text" name="image_url" value=<%= item.image %> >
+          </label>
+        </fieldset>
         <fieldset>
           <label for="title">
             <span>Title</span>
