@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <%- include('./layout/head') -%>
+  <%- include('../layout/head') -%>
   <body>
-      <%- include('./layout/header') -%>
+      <%- include('../layout/header') -%>
       <p><%= results.length %> books in the collection.</p>
-    <main class="main-container">
+    <main>
       <% results.forEach(item => { %>
-        <%- include('books/detail', {item}); %>
+        <a href="/books/<%= item.id %>">
+          <%- include('books/detail', {item}); %>
+        </a>
       <% }); %>
     </main>
-    <%- include('./layout/footer') -%>
+    <%- include('../layout/footer') -%>
   </body>
 </html>

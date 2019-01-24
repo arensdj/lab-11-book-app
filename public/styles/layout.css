@@ -1,7 +1,4 @@
 body {
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: wrap; */
   text-align: center;
   width: 100%; 
 }
@@ -28,14 +25,10 @@ body {
 }
 
 main {
-
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  
   justify-content: center;
-  /* padding: 20px;
-  padding-top: 20px; */
 }
 
 .bookEntry {
@@ -54,4 +47,8 @@ p{
 .bookTitle, .bookAuthor{
   margin: 2px;
   border-bottom: 1px solid black;
+}
+
+.hiddenForm {
+  display: none;
 }

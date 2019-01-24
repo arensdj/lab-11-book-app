@@ -1,13 +1,13 @@
 <div class="bookEntry">
-    <a href="/books/<%= item.id %>">
       <img src=<%= item.image_url %>></img>
-      <h4 class="bookTitle"> <%= item.title %> </h4>
-      <h5 class="bookAuthor"> <%= item.author %></h5>
-      <p class="bookDesc"> <%= item.description %></p>
-    </a>
+      <h4 class="bookTitle">Title:  <%= item.title %> </h4>
+      <h5 class="bookAuthor">Author:  <%= item.author %></h5>
+      <h5 class="bookIsbn">Isbn:  <%= item.isbn %></h5>
+      <p class="bookDesc">Description:  <%= item.description %></p>
+    
     <button class="bookSelect">Select This book</button>
 
-    <form class="hiddenForm" action="/books" method="post" hidden=true>
+    <form class="hiddenForm" action="/books" method="post" >
       <fieldset>
         <label for="image_url">
           <span>Image URL</span>
@@ -21,23 +21,29 @@
         </label>
       </fieldset>
       <fieldset>
-          <label for="author">
-            <span>Author</span>
-            <input type="text" name="author" value="<%= item.author %>">
+        <label for="author">
+          <span>Author</span>
+          <input type="text" name="author" value="<%= item.author %>">
+        </label>
+      </fieldset>
+      <fieldset>
+        <label for="isbn">
+          <span>Isbn</span>
+          <input type="text" name="isbn" value="<%= item.isbn %>">
+        </label>
+      </fieldset>
+      <fieldset>
+          <label for="description">
+            <span>Description</span>
+            <input type="text" name="description"  value="<%= item.description %>">
+          </label>
+      </fieldset>
+      <fieldset>
+          <label for="bookshelf">
+            <span>Bookshelf</span>
+            <input type="text" name="bookshelf" required>
           </label>
         </fieldset>
-        <fieldset>
-            <label for="description">
-              <span>Description</span>
-              <input type="text" name="description"  value="<%= item.description %>">
-            </label>
-          </fieldset>
-          <fieldset>
-              <label for="description">
-                <span>Bookshelf</span>
-                <input type="text" name="bookshelf" required>
-              </label>
-            </fieldset>
       <button type="submit">Update Details</button>
     </form>
   </div>

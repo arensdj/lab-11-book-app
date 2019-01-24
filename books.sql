@@ -8,5 +8,3 @@ CREATE TABLE books (
   description TEXT,
   bookshelf VARCHAR(255)
 );
-
-INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES('Tom Clancy', 'Hunt for Red October', '12345', 'https://i.imgur.com/J5LVHEL.jpg', 'A story about the Red October', 'One');

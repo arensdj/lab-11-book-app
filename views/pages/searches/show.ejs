@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <%- include('../layout/head') -%>
+    <%- include('../../layout/head') -%>
   <body>
-      <%- include('../layout/header') -%>
+      <%- include('../../layout/header') -%>
   <main>
     <% bookSummary[0].forEach(item => { %>
       <%- include('../books/detail', {item}); %>
       <% }); %>
             
   </main>
-  <%- include('../layout/footer') -%>
+  <%- include('../../layout/footer') -%>
 </body>
 </html>
