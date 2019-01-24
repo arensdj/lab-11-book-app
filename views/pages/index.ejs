@@ -7,7 +7,7 @@
     <main>
       <% results.forEach(item => { %>
         <a href="/books/<%= item.id %>">
-          <%- include('books/detail', {item}); %>
+          <%- include('books/detail', {formAction: 'update', item}); %>
         </a>
       <% }); %>
     </main>
