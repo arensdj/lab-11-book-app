@@ -5,6 +5,10 @@
       <%- include('../../layout/header') %>
   <main>
       <%- include('./detail', {item}); %> 
+
+      <form action="/delete/<%= item.id %>" method="post">
+        <input type="hidden" name="_method" value="delete" /> <button type="submit"> Delete </button>
+      </form>
               
   </main>
   <%- include('../../layout/footer') %>
