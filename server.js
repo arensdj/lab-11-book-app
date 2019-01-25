@@ -72,7 +72,7 @@ function Book(info) {
   this.isbn = info.industryIdentifiers[0].identifier;
   this.author = info.authors ? info.authors : 'No Author Found';
   this.description = info.description ? info.description : 'No Description provided.';
-  this.bookshelf = 'One';
+  this.bookshelf = '';
 }
 
 function addBook(request, response) {
@@ -89,15 +89,24 @@ function addBook(request, response) {
 }
 
 function getOneBook(request, response) {
-  let SQL = `SELECT * FROM books WHERE id=$1;`;
-  let values = [request.params.id];
+  getShelves()
+    .then(shelves => {
+      let SQL = `SELECT * FROM books WHERE id=$1;`;
+      let values = [request.params.id];
 
-  return client.query(SQL, values)
-    .then(result => {
-      console.log('single', result.rows);
-      return response.render('pages/books/show', {item: result.rows[0], formAction: 'update'});
+      client.query(SQL, values)
+        .then(result => {
+          console.log('single', result.rows);
+          response.render('pages/books/show', {item: result.rows[0], formAction: 'update', bookshelves: shelves.rows})
+        })
+        .catch(err => createErrorMiddleWare(err));
     })
-    .catch(err => createErrorMiddleWare(err));
+}
+
+function getShelves() {
+  let SQL = `SELECT DISTINCT bookshelf FROM books ORDER BY bookshelf;`;
+
+  return client.query(SQL);
 }
 
 function newBookshelf(request, response) {
@@ -106,7 +115,7 @@ function newBookshelf(request, response) {
   return client.query(SQL)
     .then(results => {
       // console.log('Result rows: ', results.rows);
-      response.render('pages/index', {results: results.rows});
+      response.render('pages/index', {results: results.rows, formAction: 'get'});
     })
     // .catch(createErrorMiddleWare('No data returned.'));
     .catch(error => {

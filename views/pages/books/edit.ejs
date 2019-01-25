@@ -31,11 +31,25 @@
           <input type="text" name="description"  value="<%= item.description %>">
         </label>
     </fieldset>
-    <fieldset>
-        <label for="bookshelf">
-          <span>Bookshelf</span>
-          <input type="text" name="bookshelf" required>
-        </label>
+    
+
+    <% if ('get' === formAction) { %>
+      <fieldset>
+          <label for="bookshelf">
+            <span>Bookshelf</span>
+            <input type="text" name="bookshelf" required>
+          </label>
       </fieldset>
-    <button type="submit">Update Details</button>
+      <% } else if ( bookshelves.length ) { %>
+        <select name="bookshelf" id="">
+          <% bookshelves.forEach(shelf => { %>
+            <% let selected = ( item.bookshelf === shelf.bookshelf ) ? 'selected' : ''; %>
+          <option value="<%= shelf.bookshelf %>" <%= selected %> >
+            <%= shelf.bookshelf %>
+          </option>
+
+        <% }) %>
+        </select>
+    <% } %>
+    <button type="submit"> <%- 'update' === formAction ? "Update Database" : "Add a Book" %> </button>
   </form>
