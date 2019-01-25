@@ -47,6 +47,8 @@ app.get('/books/:id', getOneBook);
 
 app.put('/books/:id', updateBook);
 
+app.delete('/delete/:id', deleteBook);
+
 // Creates a new search to the Google Boos API
 app.post('/searches', createSearch);
 
@@ -82,6 +84,15 @@ function addBook(request, response) {
   let SQL = `INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);`;
   
   let values = [author, title, isbn, image_url, description, bookshelf];
+
+  return client.query(SQL, values)
+    .then(response.redirect('/'))
+    .catch(err => createErrorMiddleWare(err));
+}
+
+function deleteBook(request, response) {
+  let SQL = `DELETE FROM books WHERE id=$1;`;
+  let values = [request.params.id];
 
   return client.query(SQL, values)
     .then(response.redirect('/'))
