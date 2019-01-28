@@ -1,33 +1,33 @@
-<h2 class="view-title"> <%- 'update' === formAction ? "Update Book" : "Add a Book" %></h2>
-<form action="<%= 'update' === formAction ? `/books/${item.id}` : '/books' %>" method="post" >
+<h2 class="view-title"> <%- 'update' === formAction ? "Update Book:" : "Add a Book:" %></h2>
+<form class="bookForm" action="<%= 'update' === formAction ? `/books/${item.id}` : '/books' %>" method="post" >
   <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
     <fieldset>
       <label for="image_url">
-        <span>Image URL</span>
+        <span>Image URL: </span>
         <input type="text" name="image_url" value= "<%= item.image_url %>">
       </label>
     </fieldset>
     <fieldset>
       <label for="title">
-        <span>Title</span>
+        <span>Title: </span>
         <input type="text" name="title"  value= "<%= item.title %>">
       </label>
     </fieldset>
     <fieldset>
       <label for="author">
-        <span>Author</span>
+        <span>Author: </span>
         <input type="text" name="author" value="<%= item.author %>">
       </label>
     </fieldset>
     <fieldset>
       <label for="isbn">
-        <span>Isbn</span>
+        <span>Isbn: </span>
         <input type="text" name="isbn" value="<%= item.isbn %>">
       </label>
     </fieldset>
     <fieldset>
         <label for="description">
-          <span>Description</span>
+          <span>Description: </span>
           <input type="text" name="description"  value="<%= item.description %>">
         </label>
     </fieldset>

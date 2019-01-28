@@ -1,29 +1,44 @@
 body {
   text-align: center;
-  width: 100%; 
+  width: 100%;
 }
-
+.bookNum{
+  margin: 20px;
+}
 .pageTitle {
   width: 100%;
   padding-left: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
-  text-align: left;
+  font-size: 50px;
 }
-
 .searchTitle {
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
 }
-
+.headerItem {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 9px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-decoration: none
+}
+.headerItem:hover{
+  background-color: beige;
+}
+.searchBooks{
+  text-align: left;
+}
 .text-input label {
-
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
+a{
+  text-decoration: none;
+}
 main {
   width: 100%;
   display: flex;
@@ -33,20 +48,29 @@ main {
 
 .bookEntry {
   border-radius: 5px;
-  background-color: lightseagreen;
+  background-color: rgb(97, 116, 115);
   max-width: 15em;
   margin: 10px;
   padding: 5px;
   padding-top: 5px;
 }
-p{
+.bookImg{
+  margin: 10px;
+}
+.bookDesc{
   max-height: 100px;
   overflow: auto;
   overflow-x: hidden;
 }
-.bookTitle, .bookAuthor{
+.bookTitle, .bookAuthor, .bookIsbn, .bookDesc{
+  color: white;
+  text-align: left;
   margin: 2px;
   border-bottom: 1px solid black;
+  padding: 2px;
+}
+.bookSelect{
+  margin:  10px;
 }
 
 .hidden-form {
@@ -54,4 +78,18 @@ p{
 }
 .visible-form{
   display: block;
+}
+.view-title{
+ padding-top: 10px;
+ padding-bottom: 5px;
+}
+.bookForm{
+  text-align: left;
+}
+input{
+  width: 95%;
+  margin: 6px;
+}
+label{
+  padding: 6px;
 }

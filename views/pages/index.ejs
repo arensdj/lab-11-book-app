@@ -3,7 +3,7 @@
   <%- include('../layout/head') -%>
   <body>
       <%- include('../layout/header') -%>
-      <p><%= results.length %> books in the collection.</p>
+      <p class="bookNum"><%= results.length %> <%= results.length === 1 ? "book" : "books" %> in the collection.</p>
     <main>
       <% results.forEach(item => { %>
         <a href="/books/<%= item.id %>">
