@@ -6,28 +6,28 @@ Lab 11 Book App
 
 ## Overview
 Implement a basic full stack application for a book list which will include the ability to search the Google Books API, add books to a database, and then render those books from a PostgreSQL database. The user will have the ability to update the details of a book or remove it from the collection.
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->
 
 ## Getting Started
-After you clone the repo, you will need to run 'npm i' in your console to install the dependencies. You will also need to create an .env file and add a PORT number.
+After you clone the repo, you will need to run 'npm i' in your console to install the dependencies for express, superagent and pg. You will also need to create an .env file and add a PORT number.
 
 PORT=3000
 
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
 ## Architecture
-This application depends on express, superagent, and ejs. It reads incoming query parameters and uses a superagent 'get()' call to return data from an Google Books API, which is then parsed into an object and returned to the client. 
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+This application depends on express, superagent, and ejs. It reads incoming query parameters and uses a superagent 'get()' call to return data from an Google Books API, which is then parsed into an object and returned to the client.  jQuery will be used for adding buttons and displaying/hiding forms.  
 
 ## Change Log
-01-22-2019 10:00am - 
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+01-22-2019 9:45am - Initial setup of files, created a basic server.js file and set up server to listen on PORT 3000.  Setup the view engine and served up static CSS files.  Initialized npm packages to include express and superagent.
+01-22-2019 10:05am - Set up the forms.
+01-22-2019 1:45pm - Implemented the browsing of books details results that included author, error handling and css styling.  Implemented browse of api results.  Added html templates.
+01-23-2019 10:30am - Database setup.
+01-23-2019 1:30pm - Implemented a bookshelf feature to organize books.  Individual books can be viewed and added to the database via POST.  Implemented ejs files.  Added buttons.  Coded logic to perform an update book detail.  The book detail includes title, author, image, isbn and description.
+01-24-2019 1:30pm - Continued to implement display bookshelf with GET method.  Implemented jquery logic to hide and display form.  Displaying select drop menu for bookshelf.
+01-25-2019 12:00pm - Added delete book feature.
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
 
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-
+Chris Merritt and Jasmin Arensdorf collaborated to create the book list application.
 
 Number and name of feature: ___#1 Setup_______________________
 
@@ -124,9 +124,30 @@ Number and name of feature: _____#10 Details View of Single Book
 
 Estimate of time needed to complete: _1:00
 
-Start time: __9:10___
+Start time: __12:10___
 
-Finish time: _______
+Finish time: _1:10___
 
 Actual time needed to complete: ___1:00__
 
+
+Number and name of feature: _____#11 Update View of Single Book
+
+Estimate of time needed to complete: _1:00
+
+Start time: __9:10___
+
+Finish time: _10:10___
+
+Actual time needed to complete: ___1:00__
+
+
+Number and name of feature: _____#12 Delete a Single Book
+
+Estimate of time needed to complete: _1:00
+
+Start time: __9:10___
+
+Finish time: _1:30___
+
+Actual time needed to complete: ___4:00__
